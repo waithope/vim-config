@@ -78,11 +78,6 @@ cnoremap <C-A>        <Home>
 cnoremap <C-E>        <End>
 cnoremap <C-K>        <C-U>
 
-"visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-" vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-" vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>))
-
 " Return to last edsfjlslfit position when opening files!
 autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -102,7 +97,7 @@ set cursorline
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-" Turn on/off  ycm completion
+" Ycm completion
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_seed_identifiers_with_syntax=1
@@ -112,6 +107,15 @@ let g:ycm_confirm_extra_conf=0
 let g:ycm_cache_omnifunc=0
 let g:ycm_server_keep_logfiles=1
 let g:ycm_always_populate_location_list=0
+" Completion in string input
+let g:ycm_complete_in_strings = 1
+let g:ycm_filetype_blacklist = {
+       \ 'tagbar' : 1,
+             \ 'nerdtree' : 1,
+                   \}
+map <F2> :YcmCompleter GoToDefinition<CR>
+map <F3> :YcmCompleter GoToDeclaration<CR>
+map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Set syntax highlight
 syntax on
@@ -144,7 +148,6 @@ inoremap { {}<ESC>i
 inoremap {n {<esc>o}<esc>O
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
-
 " inoremap $1 ()<esc>i
 " inoremap $2 []<esc>i
 " inoremap $3 {}<esc>i
@@ -162,20 +165,8 @@ map <C-n> :NERDTreeToggle<CR>
 " Split window 
 let g:ycm_goto_buffer_command = 'horizontal-split'
 
-map <F2> :YcmCompleter GoToDefinition<CR>
-map <F3> :YcmCompleter GoToDeclaration<CR>
-map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " Map ctrl+A to select All
 map <silent>  <C-A>  gg v G
-
-" Completion in string input
-let g:ycm_complete_in_strings = 1
-let g:ycm_filetype_blacklist = {
-       \ 'tagbar' : 1,
-             \ 'nerdtree' : 1,
-                   \}
-                
 
 " Not popup scratch window
 set completeopt-=previe
