@@ -37,6 +37,21 @@ nnoremap ,, <C-w><C-w>
 "O : append (open) a new line above the current line
 "ea : insert (append) at the end of the word
 
+" Set syntax highlight
+syntax on
+
+" Enable mouse
+set mouse=a
+
+" 1 tab indent 4 spaces
+set shiftwidth=4  
+set autoindent
+set cindent
+set number 
+set tabstop=4
+set expandtab 
+set softtabstop=4
+
 "No backup file
 set nobackup 
 
@@ -116,21 +131,6 @@ let g:ycm_filetype_blacklist = {
 map <F2> :YcmCompleter GoToDefinition<CR>
 map <F3> :YcmCompleter GoToDeclaration<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" Set syntax highlight
-syntax on
-
-" Enable mouse
-set mouse=a
-
-" 1 tab indent 4 spaces
-set shiftwidth=4  
-set autoindent
-set cindent
-set number 
-set tabstop=4
-set expandtab 
-set softtabstop=4
 
 " IndentLine
 let g:indentLine_char = '┆' 
