@@ -14,8 +14,8 @@ inoremap <C-j> <Up>
 inoremap <C-k> <Down>
 
 " Splitting map vertical/horizontal/close/switch
-nnoremap ,v <C-w>v
-nnoremap ,h <C-w>s
+nnoremap ,v <C-w>v<C-w>l
+nnoremap ,h <C-w>s<C-w>j
 nnoremap ,c <C-w>q
 nnoremap ,, <C-w><C-w>
 
@@ -37,23 +37,11 @@ nnoremap ,, <C-w><C-w>
 "O : append (open) a new line above the current line
 "ea : insert (append) at the end of the word
 
-" Set syntax highlight
-syntax on
-
-" Enable mouse
-set mouse=a
-
-" 1 tab indent 4 spaces
-set shiftwidth=4  
-set autoindent
-set cindent
-set number 
-set tabstop=4
-set expandtab 
-set softtabstop=4
-
 "No backup file
 set nobackup 
+
+"Don't wrap line
+set nowrap
 
 " Set colors theme
 se t_Co=256
@@ -61,6 +49,11 @@ syntax enable
 set background=dark
 " colorscheme solarized 
 colorscheme gruvbox
+
+" make tab completion for files/buffers act like bash
+set wildmenu                    
+set wildmode=list:full          
+set wildignore=*.swp,*.bak,*.pyc,*.class"""
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -79,6 +72,15 @@ set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch 
+
+" Close swapfile
+set noswapfile
+
+"Clear out highlight search
+nnoremap ,nh  :noh<cr>
+
+"Clear all trailing Whitespaces
+nnoremap caw :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Show matching brackets when text indicator is over them
 set showmatch 
@@ -132,8 +134,26 @@ map <F2> :YcmCompleter GoToDefinition<CR>
 map <F3> :YcmCompleter GoToDeclaration<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" Set syntax highlight
+syntax on
+
+" Enable mouse
+set mouse=a
+
+" 1 tab indent 4 spaces
+set shiftwidth=4  
+set autoindent
+set cindent
+set number 
+set tabstop=4
+set expandtab 
+set softtabstop=4
+
+set relativenumber
+set backspace=indent,eol,start
+
 " IndentLine
-let g:indentLine_char = '┆' 
+let g:indentLine_char = '┊' 
 let g:indentLine_color_term=242
 " Map ctrl+i to IndentLinesToggle 
 map <C-i> :IndentLinesToggle<CR>
@@ -154,13 +174,16 @@ inoremap " ""<ESC>i
 " inoremap $q ''<esc>i
 " inoremap $e ""<esc>i
 
-"Press m to bring up the NERDTree Filesystem Menu.Then you can add, rename,
-"and delete files and directories.
+"Press m to bring up the NERDTree Filesystem Menu.Then you can add, rename, and delete files and directories.
 " Change the nerdtree's window size
 let g:NERDTreeWinSize=20
+" Highlight the selected entry in the tree
+let NERDTreeHighlightCursorline=1
 " Map ctrl+n to turn on/off NerdTree
 map <C-n> :NERDTreeToggle<CR>
-"
+" Don't display these kinds of files
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+             \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
 " Split window 
 let g:ycm_goto_buffer_command = 'horizontal-split'
