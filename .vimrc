@@ -13,11 +13,16 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Up>
 inoremap <C-k> <Down>
 
+" Quickly open/reload vim
+nnoremap ,ev :vsplit $MYVIMRC<CR>
+" nnoremap ,sv :source $MYVIMRC<CR>
+
 " Splitting map vertical/horizontal/close/switch
 nnoremap ,v <C-w>v<C-w>l
 nnoremap ,h <C-w>s<C-w>j
 nnoremap ,c <C-w>q
 nnoremap ,, <C-w><C-w>
+nnoremap ,z <C-w>r 
 
 "Common command like cut copy paste etc.
 "yw: yank the current word includes the trailing whitespace
@@ -37,6 +42,9 @@ nnoremap ,, <C-w><C-w>
 "O : append (open) a new line above the current line
 "ea : insert (append) at the end of the word
 
+"C/C++ specific settings
+autocmd FileType c,cpp,cc  set cindent comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
+
 "No backup file
 set nobackup 
 
@@ -53,7 +61,7 @@ colorscheme gruvbox
 " make tab completion for files/buffers act like bash
 set wildmenu                    
 set wildmode=list:full          
-set wildignore=*.swp,*.bak,*.pyc,*.class"""
+set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -148,7 +156,6 @@ set number
 set tabstop=4
 set expandtab 
 set softtabstop=4
-
 set relativenumber
 set backspace=indent,eol,start
 
