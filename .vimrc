@@ -29,7 +29,7 @@ nnoremap ,z <C-w>r
 "yiw: yank the current word exludes the trailing whitespace
 "%: jump to the matching { .. } or ( .. ), etc..
 "r: replace one character
-"Shift+R: replace one character
+"Shift+R: replace n characters
 "~: changes case.
 "H: goes to the top of the screen
 "M: goes to the middle of the screen
@@ -122,6 +122,12 @@ set cursorline
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
+"Turn/off tagbar
+nmap <F8> :TagbarToggle<CR>
+"Ctags path
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_width=35
+
 " Ycm completion
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
@@ -131,7 +137,7 @@ let g:ycm_enable_diagnostic_highlighting=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_cache_omnifunc=0
 let g:ycm_server_keep_logfiles=1
-let g:ycm_always_populate_location_list=0
+let g:ycm_error_symbol='ㄨ'
 " Completion in string input
 let g:ycm_complete_in_strings = 1
 let g:ycm_filetype_blacklist = {
@@ -141,6 +147,7 @@ let g:ycm_filetype_blacklist = {
 map <F2> :YcmCompleter GoToDefinition<CR>
 map <F3> :YcmCompleter GoToDeclaration<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap ,gd :YcmDiags<CR>
 
 " Set syntax highlight
 syntax on
@@ -160,6 +167,7 @@ set relativenumber
 set backspace=indent,eol,start
 
 " IndentLine
+"Alignment command: n==   means align n rows from this line
 let g:indentLine_char = '┊' 
 let g:indentLine_color_term=242
 " Map ctrl+i to IndentLinesToggle 
@@ -213,6 +221,8 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'majutsushi/tagbar'
+
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'Yggdroot/indentLine'
@@ -229,7 +239,7 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized' 
 
 Plugin 'morhetz/gruvbox'
 
