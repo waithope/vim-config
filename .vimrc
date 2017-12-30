@@ -1,6 +1,6 @@
 " Name: vim config
 " Author: waithope gan
-" Time:2017.12.21
+" Time:2017.12.30
 
 " Map jj to enter normal mode
 imap jj <Esc>
