@@ -1,13 +1,16 @@
 " Name: vim config
 " Author: waithope gan
-" Time:2017.12.31
+" Time:2018.01.11
 
 " Map jj to enter normal mode
 imap jj <Esc>
 
-" Map move cursor head/tail/ right/left up/down   
+" Map w!! to write read-only files in vim
+cnoremap w!! w !sudo tee %
+
+" Map move cursor head/tail/ right/left up/down
 inoremap <C-A> <Home>
-inoremap <C-E> <End>   
+inoremap <C-E> <End>
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>
 inoremap <C-j> <Up>
@@ -22,7 +25,7 @@ nnoremap ,v <C-w>v<C-w>l
 nnoremap ,h <C-w>s<C-w>j
 nnoremap ,c <C-w>q
 nnoremap ,, <C-w><C-w>
-nnoremap ,z <C-w>r 
+nnoremap ,z <C-w>r
 
 "Common command like cut copy paste etc.
 "yw: yank the current word includes the trailing whitespace
@@ -46,7 +49,7 @@ nnoremap ,z <C-w>r
 autocmd FileType c,cpp,cc  set cindent comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
 
 "No backup file
-set nobackup 
+set nobackup
 
 "Don't wrap line
 set nowrap
@@ -55,12 +58,12 @@ set nowrap
 se t_Co=256
 syntax enable
 set background=dark
-" colorscheme solarized 
+" colorscheme solarized
 colorscheme gruvbox
 
 " make tab completion for files/buffers act like bash
-set wildmenu                    
-set wildmode=list:full          
+set wildmenu
+set wildmode=list:full
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " Set to auto read when a file is changed from the outside
@@ -72,14 +75,14 @@ set cmdheight=2
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Close swapfile
 set noswapfile
@@ -91,7 +94,7 @@ nnoremap ,nh  :noh<cr>
 nnoremap caw :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -132,7 +135,7 @@ let g:tagbar_width=35
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_enable_diagnostic_signs=1 
+let g:ycm_enable_diagnostic_signs=1
 let g:ycm_enable_diagnostic_highlighting=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_cache_omnifunc=0
@@ -156,21 +159,21 @@ syntax on
 set mouse=a
 
 " 1 tab indent 4 spaces
-set shiftwidth=4  
+set shiftwidth=4
 set autoindent
 set cindent
-set number 
+set number
 set tabstop=4
-set expandtab 
+set expandtab
 set softtabstop=4
 set relativenumber
 set backspace=indent,eol,start
 
 " IndentLine
 "Alignment command: n==   means align n rows from this line
-let g:indentLine_char = '┊' 
+let g:indentLine_char = '┊'
 let g:indentLine_color_term=242
-" Map ctrl+i to IndentLinesToggle 
+" Map ctrl+i to IndentLinesToggle
 map <C-i> :IndentLinesToggle<CR>
 
 "Ctrlp show hidden file
@@ -200,7 +203,7 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
              \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
-" Split window 
+" Split window
 let g:ycm_goto_buffer_command = 'horizontal-split'
 
 " Map ctrl+A to select All
@@ -212,7 +215,7 @@ set completeopt-=previe
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
- 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -239,7 +242,7 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'altercation/vim-colors-solarized' 
+Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'morhetz/gruvbox'
 
