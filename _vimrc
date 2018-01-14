@@ -5,24 +5,24 @@ behave mswin
 "Map jj to enter normal mode
 imap jj <Esc>
 
-"Auto-reload _vimrc file without restarting vim, when disable configuration
-"using unmap command
-augroup myvimrc     
-    au!     
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif 
+"Auto-reload _vimrc file without restarting vim,
+"when disable configuration using unmap command
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
     " au BufWritePost _vimrc so $MYVIMRC
 augroup END
 
-" set langmenu=en_US 
-let $LANG='en_US' 
-" source $VIMRUNTIME/delmenu.vim 
+" set langmenu=en_US
+let $LANG='en_US'
+" source $VIMRUNTIME/delmenu.vim
 " source $VIMRUNTIME/menu.vim
 
 
-" Drag current line/s vertically and auto-indent 
+" Drag current line/s vertically and auto-indent
 vnoremap <a-k> :m-2<CR>gv=gv
-vnoremap <a-j> :m'>+<CR>gv=gv 
-noremap  <a-k> :m-2<CR> 
+vnoremap <a-j> :m'>+<CR>gv=gv
+noremap  <a-k> :m-2<CR>
 noremap  <a-j> :m+<CR>
 
 " Start new line from any cursor position
@@ -31,7 +31,7 @@ inoremap <S-Return> <C-o>o
 " nnoremap ,w :write<CR>
 
 " Map w!! to write read-only files in vim
-cnoremap w!! w !sudo tee %
+" cnoremap w!! w !sudo tee %
 
 " Quickly open/reload _vimrc
 nnoremap ,ev :vsplit $MYVIMRC<CR>
@@ -70,8 +70,8 @@ set ignorecase
 " When searching try to be smart about cases
 set smartcase
 
-" Highlight search results 
-" set hlsearch  
+" Highlight search results
+" set hlsearch
 set nohlsearch
 " Makes  search act like search in modern browsers
 set incsearch
