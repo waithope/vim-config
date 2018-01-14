@@ -1,0 +1,13 @@
+
+"How to use git to maintain your code
+
+update your project
+1. git init (it is necessary when you push your project first )
+
+2. git add file1 file2 file3... or git add . //git add . means add all files
+
+3. git commit -m "comment" 
+
+4. git pull origin master    //it's good for you to keep your project complete 
+
+5. git push (-u) origin master  // you need add -u when you push your project the first time
