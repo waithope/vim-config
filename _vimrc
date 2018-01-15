@@ -1,3 +1,23 @@
+set nocompatible
+filetype off
+set rtp+=$VIM\vimfiles\bundle\Vundle.vim\
+call vundle#begin('$VIM\vimfiles\bundle\')
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdtree'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'kien/ctrlp.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -13,17 +33,35 @@ augroup myvimrc
     " au BufWritePost _vimrc so $MYVIMRC
 augroup END
 
+syntax enable
+if has('gui_running')
+set guifont=Monaco:h11
+set cmdheight=2
+set background=dark
+colorscheme gruvbox
+set guioptions-=T    "disable toolbar
+set guioptions-=m    "diasble menubar
+set guioptions-=r    "disable right-hand scrollbar
+set guioptions-=L    "diable left-hand scrollbar
+set guicursor+=n-c-v:blinkon500-blinkoff500
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+endif
+
 " set langmenu=en_US
 let $LANG='en_US'
 " source $VIMRUNTIME/delmenu.vim
 " source $VIMRUNTIME/menu.vim
 
-
 " Drag current line/s vertically and auto-indent
 vnoremap <a-k> :m-2<CR>gv=gv
 vnoremap <a-j> :m'>+<CR>gv=gv
-noremap  <a-k> :m-2<CR>
-noremap  <a-j> :m+<CR>
+nnoremap  <a-k> :m-2<CR>
+nnoremap  <a-j> :m+<CR>
+
+"Resize width of split window
+noremap <a-,> <c-w><
+noremap <a-.> <c-w>>
 
 " Start new line from any cursor position
 inoremap <S-Return> <C-o>o
@@ -47,6 +85,8 @@ set relativenumber
 set backspace=indent,eol,start
 set relativenumber
 set nobackup
+set noswapfile
+set noundofile
 set nowrap
 
 " Splitting map vertical/horizontal/close/switch
@@ -56,9 +96,6 @@ nnoremap ,c <C-w>q
 nnoremap ,, <C-w><C-w>
 nnoremap ,z <C-w>r
 
-syntax enable
-
-" syntax on
 " colorscheme gruvbox
 
 " Enable mouse
@@ -151,22 +188,4 @@ map <C-n> :NERDTreeToggle<CR>
 "   endif
 " endfunction
 
-set nocompatible
-filetype off
-
-set rtp+=$VIM\vimfiles\bundle\Vundle.vim\
-
-call vundle#begin('$VIM\vimfiles\bundle\')
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdtree'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'kien/ctrlp.vim'
-
-call vundle#end()
-filetype plugin indent on
 
