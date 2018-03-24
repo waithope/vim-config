@@ -158,6 +158,18 @@ syntax on
 " Enable mouse
 set mouse=a
 
+" Change cursor shape in insert mode
+if has("autocmd")
+      au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+        au InsertEnter,InsertChange *
+            \ if v:insertmode == 'i' | 
+            \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+            \ elseif v:insertmode == 'r' |
+            \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+            \ endif
+          au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
 " 1 tab indent 4 spaces
 set shiftwidth=4
 set autoindent
@@ -180,12 +192,12 @@ map <C-i> :IndentLinesToggle<CR>
 let g:ctrlp_show_hidden=1
 
 " Automatically complete parentheses
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap {n {<esc>o}<esc>O
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {}<ESC>i
+" inoremap {n {<esc>o}<esc>O
+" inoremap ' ''<ESC>i
+" inoremap " ""<ESC>i
 " inoremap $1 ()<esc>i
 " inoremap $2 []<esc>i
 " inoremap $3 {}<esc>i
