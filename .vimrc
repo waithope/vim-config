@@ -160,12 +160,12 @@ set mouse=a
 
 " Change cursor shape in insert mode
 if has("autocmd")
-      au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+      au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
         au InsertEnter,InsertChange *
             \ if v:insertmode == 'i' | 
-            \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+            \   silent execute '!echo -ne "\e[5 q"' | redraw! |
             \ elseif v:insertmode == 'r' |
-            \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+            \   silent execute '!echo -ne "\e[3 q"' | redraw! |
             \ endif
           au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
