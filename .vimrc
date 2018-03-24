@@ -1,5 +1,5 @@
 " Name: vim config
-" Author: waithope gan
+" Author: gan
 " Time:2018.01.11
 
 " Map jj to enter normal mode
