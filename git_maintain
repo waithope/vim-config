@@ -8,6 +8,8 @@ update your project
 
 3. git commit -m "comment" 
 
-4. git pull origin master    //it's good for you to keep your project complete 
+4. git remote add origin
 
-5. git push (-u) origin master  // you need add -u when you push your project the first time
+5. git pull origin master / git pull origin master --allow-unrelated-histories    //it's good for you to keep your project complete 
+
+6. git push (-u) origin master  // you need add -u when you push your project the first time
