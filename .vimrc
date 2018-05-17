@@ -1,9 +1,14 @@
 " Name: vim config
 " Author: gan
-" Time:2018.01.11
+" Time:2018.05.17
 
 " Map jj to enter normal mode
 imap jj <Esc>
+
+
+" Using terminal while coding in vim
+" Method 1: ctrl-z suspend vim, fg command in shell calls it back.
+" Method 2: :!<command>
 
 " Map w!! to write read-only files in vim
 cnoremap w!! w !sudo tee %
@@ -26,6 +31,12 @@ nnoremap ,h <C-w>s<C-w>j
 nnoremap ,c <C-w>q
 nnoremap ,, <C-w><C-w>
 nnoremap ,z <C-w>r
+
+
+" Jump to the file under the cursor
+" go file
+" shift + k display function's info
+nnoremap gf <C-w>v<C-w>l gf
 
 "Common command like cut copy paste etc.
 "yw: yank the current word includes the trailing whitespace
@@ -159,16 +170,16 @@ syntax on
 set mouse=a
 
 " Change cursor shape in insert mode
-if has("autocmd")
-      au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-        au InsertEnter,InsertChange *
-            \ if v:insertmode == 'i' | 
-            \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-            \ elseif v:insertmode == 'r' |
-            \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-            \ endif
-          au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-endif
+" if has("autocmd")
+"     au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+"     au InsertEnter,InsertChange *
+"         \ if v:insertmode == 'i' | 
+"         \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+"         \ elseif v:insertmode == 'r' |
+"         \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+"         \ endif
+"     au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+" endif
 
 " 1 tab indent 4 spaces
 set shiftwidth=4
@@ -261,6 +272,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'git://git.wincent.com/command-t.git'
+
+" Enhancement for Vim like cursor shape change in insert mode and replace mode
+Plugin 'wincent/terminus'
 
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
